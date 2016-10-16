@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Acceso a Noctua</title>
+
+        <meta name="description" content="Noctua">
+        <meta name="author" content="SyP4">
+        <meta name="robots" content="noindex, nofollow">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+        <link rel="shortcut icon" href="{{ STATIC_URL }}back/img/favicon.ico">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon152.png" sizes="152x152">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/plugins.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/main.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/themes.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/kendo.common-fiori.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/kendo.fiori.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/kendo.fiori.mobile.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/notifications.css"/>
+        <script src="{{ STATIC_URL }}back/js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <div id="login-background">
+            <img src="{{ STATIC_URL }}back/img/placeholders/headers/login_header.jpg" alt="Login Background" class="animation-pulseSlow">
+        </div>
+
+        <div id="login-container" class="animation-fadeIn">
+            <div class="login-title text-center">
+                <h1><i class="gi gi-flash"></i> <strong>Noctua</strong><br><small>Por favor <strong>Accede</strong> o <strong>Regístrate</strong></small></h1>
+            </div>
+
+            <div class="block push-bit">
+                <form action="" method="post" id="form-login" class="form-horizontal form-bordered form-control-borderless">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                <input type="text" id="login-user" name="login-user" class="form-control input-lg" placeholder="Usuario">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                                <input type="password" id="login-password" name="login-password" class="form-control input-lg" placeholder="Contraseña">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-actions">
+                        <div class="col-xs-8 text-right">
+                            <button class="btn btn-alt btn-primary"><i class="fa fa-angle-right"></i> Acceder a Noctua</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 text-center">
+                            <a href="javascript:void(0)" id="link-reminder-login"><small>¿Olvidaste la contraseña?</small></a> -
+                            <a href="javascript:void(0)" id="link-register-login"><small>Crear una nueva cuenta</small></a>
+                        </div>
+                    </div>
+                </form>
+
+                <form action="" method="post" id="form-reminder" class="form-horizontal form-bordered form-control-borderless display-none">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                <input type="text" id="reminder-email" name="reminder-email" class="form-control input-lg" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-actions">
+                        <div class="col-xs-12 text-right">
+                            <button type="submit" class="btn btn-alt btn-primary"><i class="fa fa-angle-right"></i> Resetear contraseña</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 text-center">
+                            <small>¿Recuerdas tú contraseña?</small> <a href="javascript:void(0)" id="link-reminder"><small>Acceder</small></a>
+                        </div>
+                    </div>
+                </form>
+
+                <form action="" method="post" id="form-register" class="form-horizontal form-bordered form-control-borderless display-none">
+                    <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-user"></i></span>
+                                <input type="text" id="register-firstname" name="register-firstname" class="form-control input-lg" placeholder="Nombre">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-user"></i></span>
+                                <input type="text" id="register-empresa" name="register-empresa" class="form-control input-lg" placeholder="Empresa">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-shop"></i></span>
+                                <input id="tipo" style="width: 100%" name="tipo" class="form-control" placeholder="Tipo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-globe_af"></i></span>
+                                <input id="ciudad" placeholder="Seleccione la ciudad..." />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                <input type="text" id="register-email" name="register-email" class="form-control input-lg" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-user"></i></span>
+                                <input type="text" id="register-user" name="register-user" class="form-control input-lg" placeholder="Usuario">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                                <input type="password" id="register-password" name="register-password" class="form-control input-lg" placeholder="Contraseña">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group group-small">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                                <input type="password" id="register-password-verify" name="register-password-verify" class="form-control input-lg" placeholder="Repetir contraseña">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-actions">
+                        <div class="col-xs-6">
+                            <a href="#modal-terms" data-toggle="modal" class="register-terms">Términos de uso</a>
+                            <label class="switch switch-primary" data-toggle="tooltip" title="Acepto los términos de uso">
+                                <input type="checkbox" id="register-terms" name="register-terms">
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button type="submit" class="btn btn-alt btn-success"><i class="fa fa-plus"></i> Registrarse en Noctua</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 text-center">
+                            <small>¿No tienes cuenta?</small> <a href="javascript:void(0)" id="link-register"><small>Login</small></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <footer class="text-muted text-center">
+                <small><span id="year-copy"></span> &copy; <a href="http://www.Noctuaweb.com" target="_blank">Noctua</a></small>
+            </footer>
+        </div>
+
+        <div id="modal-terms" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Términos y Condiciones</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Title</h4>
+                        <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h4>Title</h4>
+                        <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h4>Title</h4>
+                        <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span id="notification" style="display:none;"></span>
+
+        <script id="errorTemplate" type="text/x-kendo-template">
+            <div class="wrong-pass">
+                <img src="{{ STATIC_URL }}back/img/error-icon.png" />
+                <h3><b>#= title #</b></h3>
+                <p>#= message #</p>
+            </div>
+        </script>
+
+        <script id="successTemplate" type="text/x-kendo-template">
+            <div class="success">
+                <img src="{{ STATIC_URL }}back/img/success-icon.png" />
+                <h3><b>#= title #</b></h3>
+                <p>#= message #</p>
+            </div>
+        </script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>!window.jQuery && document.write(decodeURI('%3Cscript src="{{ STATIC_URL }}back/js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));</script>
+
+        <script src="{{ STATIC_URL }}back/js/vendor/bootstrap.min.js"></script>
+        <script src="{{ STATIC_URL }}back/js/plugins.js"></script>
+        <script src="{{ STATIC_URL }}back/js/app.js"></script>
+
+        <script src="{{ STATIC_URL }}back/js/pages/login.js"></script>
+        <script src="{{ STATIC_URL }}back/js/helpers/ajaxredirect.js"></script>
+        <script src="{{ STATIC_URL }}back/js/kendo.all.min.js"></script>
+
+        <script>$(function(){ Login.init("{{ csrftoken }}"); });</script>
+    </body>
+</html>

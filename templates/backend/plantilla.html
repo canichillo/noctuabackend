@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Noctua - {% block titulo %}{% endblock %}</title>
+
+        <meta name="description" content="Noctua.">
+        <meta name="author" content="SyP4">
+        <meta name="robots" content="noindex, nofollow">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+        <link rel="shortcut icon" href="{{ STATIC_URL }}back/img/favicon.ico">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon152.png" sizes="152x152">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/plugins.css">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/main.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/themes.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/kendo.common-fiori.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/kendo.fiori.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/kendo.fiori.mobile.min.css">
+        {% block css %}{% endblock %}
+        <script src="{{ STATIC_URL }}back/js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <div id="page-wrapper">
+            <div class="preloader themed-background">
+                <h1 class="push-top-bottom text-light text-center">Noctua</h1>
+                <div class="inner">
+                    <h3 class="text-light visible-lt-ie9 visible-lt-ie10"><strong>Cargando...</strong></h3>
+                    <div class="preloader-spinner hidden-lt-ie9 hidden-lt-ie10"></div>
+                </div>
+            </div>
+
+            <div id="page-container" class="header-fixed-top sidebar-partial sidebar-visible-lg sidebar-no-animations footer-fixed">
+                {% include "backend/menu.html" %}
+
+                <div id="main-container">
+                   <header class="navbar navbar-default navbar-fixed-top">
+                        <ul class="nav navbar-nav-custom">
+                            <li>
+                                <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');">
+                                    <i class="fa fa-bars fa-fw"></i>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="gi gi-settings"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-custom dropdown-options">
+                                    <li class="dropdown-header text-center">Estilo Cabecera</li>
+                                    <li>
+                                        <div class="btn-group btn-group-justified btn-group-sm">
+                                            <a href="javascript:void(0)" class="btn btn-primary" id="options-header-default">Claro</a>
+                                            <a href="javascript:void(0)" class="btn btn-primary" id="options-header-inverse">Oscuro</a>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-header text-center">Estilo Página</li>
+                                    <li>
+                                        <div class="btn-group btn-group-justified btn-group-sm">
+                                            <a href="javascript:void(0)" class="btn btn-primary" id="options-main-style">Defecto</a>
+                                            <a href="javascript:void(0)" class="btn btn-primary" id="options-main-style-alt">Alternativo</a>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-header text-center">Diseño Principal</li>
+                                    <li>
+                                        <button class="btn btn-alt btn-block btn-primary" id="options-header-top">Cabecera (Alto)</button>
+                                        <button class="btn btn-alt btn-block btn-primary" id="options-header-bottom">Cabecera (Bajo)</button>
+                                    </li>
+                                    <li class="dropdown-header text-center">Pie</li>
+                                    <li>
+                                        <div class="btn-group btn-group-justified btn-group-sm">
+                                            <a href="javascript:void(0)" class="btn btn-primary" id="options-footer-static">Defecto</a>
+                                            <a href="javascript:void(0)" class="btn btn-primary" id="options-footer-fixed">Anclado</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav-custom pull-right">
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                    {% if usuario.IM %}
+                                        <img src="{{ IMG_URL }}administradores/{{ usuario.IM }}.jpg" alt="avatar"> <i class="fa fa-angle-down"></i>
+                                    {% else %}
+                                        <img src="{{ STATIC_URL }}back/img/icon57.png" alt="avatar">
+                                    {% endif %}
+                                </a>
+                                <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                                    <li class="dropdown-header text-center">Cuenta</li>
+                                    <li>
+                                        <a href="/admin/perfil">
+                                            <i class="fa fa-user fa-fw pull-right"></i>
+                                            Perfíl
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="/admin/bloquearcuenta"><i class="fa fa-lock fa-fw pull-right"></i> Bloquear cuenta</a>
+                                        <a href="/admin/cerrarsesion"><i class="fa fa-ban fa-fw pull-right"></i> Cerrar sesión</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </header>
+
+                    <div id="page-content">
+                        {% block contenido %}{% endblock %}
+                    </div>
+
+                    <footer class="clearfix">
+                        <div class="pull-right">
+                            Creado con <i class="fa fa-heart text-danger"></i> por <a href="http://goo.gl/vNS3I" target="_blank">SyP4</a>
+                        </div>
+                        <div class="pull-left">
+                            <span id="year-copy"></span> &copy; <a href="http://goo.gl/TDOSuC" target="_blank">Noctua 1.0.1</a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
+
+        <!--[if IE 8]><script src="{{ STATIC_URL }}back/js/helpers/excanvas.min.js"></script><![endif]-->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>!window.jQuery && document.write(decodeURI('%3Cscript src="{{ STATIC_URL }}back/js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));</script>
+
+        <script src="{{ STATIC_URL }}back/js/vendor/bootstrap.min.js"></script>
+        <script src="{{ STATIC_URL }}back/js/plugins.js"></script>
+        <script src="{{ STATIC_URL }}back/js/app.js"></script>
+        <script src="{{ STATIC_URL }}back/js/helpers/ajaxredirect.js"></script>
+        <script src="{{ STATIC_URL }}back/js/kendo.all.min.js"></script>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

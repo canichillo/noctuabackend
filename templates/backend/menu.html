@@ -1,0 +1,71 @@
+<div id="sidebar">
+    <div class="sidebar-scroll">
+        <div class="sidebar-content">
+            <a href="/admin" class="sidebar-brand">
+                <i class="gi gi-flash"></i><strong>Noctua</strong> Admin
+            </a>
+
+            <div class="sidebar-section sidebar-user clearfix">
+                <div class="sidebar-user-avatar">
+                    <a href="/admin/perfil">
+                        {% if usuario.IM %}
+                            <img src="{{ IMG_URL }}administradores/{{ usuario.IM }}.jpg" alt="avatar">
+                        {% else %}
+                            <img src="{{ STATIC_URL }}back/img/icon72.png" alt="avatar">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="sidebar-user-name">{{ usuario.US }}</div>
+                <div class="sidebar-user-links">
+                    <a href="/admin/perfil" data-toggle="tooltip" data-placement="bottom" title="Perfíl"><i class="gi gi-user"></i></a>
+                    <a href="page_ready_inbox.html" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i></a>
+                    <a href="#modal-user-settings" data-toggle="modal" class="enable-tooltip" data-placement="bottom" title="Settings"><i class="gi gi-cogwheel"></i></a>
+                    <a href="/admin/cerrarsesion" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"><i class="gi gi-exit"></i></a>
+                </div>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="/admin" {% if request.path == "/admin" %}class=" active"{% endif %}><i class="gi gi-stopwatch sidebar-nav-icon"></i>Principal</a>
+                </li>
+                {% if usuario.TI == "SA" %}
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-title">Archivo</span>
+                    </li>
+                    <li>
+                        <a href="/admin/paises" {% if request.path == "/admin/paises" %}class=" active"{% endif %}><i class="gi gi-globe_af sidebar-nav-icon"></i>Paises</a>
+                    </li>
+                    <li>
+                        <a href="/admin/ciudades" {% if request.path == "/admin/ciudades" %}class=" active"{% endif %}><i class="gi gi-global sidebar-nav-icon"></i>Ciudades</a>
+                    </li>
+                    <li>
+                        <a href="/admin/empresas" {% if request.path == "/admin/empresas" %}class=" active"{% endif %}><i class="gi gi-shop sidebar-nav-icon"></i>Empresas</a>
+                    </li>
+                    <li>
+                        <a href="/admin/ofertas" {% if request.path == "/admin/ofertas" %}class=" active"{% endif %}><i class="gi gi-beer sidebar-nav-icon"></i>Ofertas</a>
+                    </li>
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-title">Gestión</span>
+                    </li>
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-title">Estadísticas</span>
+                    </li>
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-title">Configuración</span>
+                    </li>
+                {% endif %}
+                {% if usuario.TI == "E" %}
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-title">Gestión</span>
+                    </li>
+                    <li>
+                        <a href="/admin/ofertas" {% if request.path == "/admin/ofertas" %}class=" active"{% endif %}><i class="fa fa-ticket sidebar-nav-icon"></i>Ofertas</a>
+                    </li>
+                    <li>
+                        <a href="/admin/eventos" {% if request.path == "/admin/eventos" %}class=" active"{% endif %}><i class="fa fa-calendar sidebar-nav-icon"></i>Eventos</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

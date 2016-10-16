@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1385325488">
+    <data-source source="LOCAL" name="Django default" uuid="3bc42ebe-b6b0-46a0-8c38-eec8df23757b">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://178.62.35.173:5432/django</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Django aws" uuid="7857ea7b-c24e-4ee3-9f4d-6074d911f740">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://noctua.cbeoodlhw7gs.eu-west-1.rds.amazonaws.com:5432/postgres</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Django local" uuid="5487ed23-97b4-413e-bd98-f3f93a4550e9">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/postgres</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

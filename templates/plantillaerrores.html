@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Noctua</title>
+
+        <meta name="description" content="Noctua">
+        <meta name="author" content="SyP4">
+        <meta name="robots" content="noindex, nofollow">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+        <link rel="shortcut icon" href="{{ STATIC_URL }}back/img/favicon.ico">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon152.png" sizes="152x152">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/plugins.css">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/main.css">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/themes.css">
+
+        <script src="{{ STATIC_URL }}back/js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <div id="error-container">
+            <div class="error-options">
+                <h3><i class="fa fa-chevron-circle-left text-muted"></i> <a href="javascript: history.go(-1)">Volver atrás</a></h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <h1><i class="fa {{ iconos }} {{ animacion }}"></i> {{ error }}</h1>
+                    <h2 class="h3">{{ mensaje | safe }}</h2>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

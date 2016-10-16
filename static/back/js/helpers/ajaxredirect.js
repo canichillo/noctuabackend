@@ -1,0 +1,1 @@
+$(document).ready(function(){$(document).ajaxComplete(function(b,c,a){if(c.status==278){window.location.href=c.getResponseHeader("Location")}})});

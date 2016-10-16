@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Noctua - Bloqueo de cuenta</title>
+
+        <meta name="description" content="Noctua.">
+        <meta name="author" content="SyP4">
+        <meta name="robots" content="noindex, nofollow">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+        <link rel="shortcut icon" href="{{ STATIC_URL }}back/img/favicon.ico">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}back/img/icon152.png" sizes="152x152">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/plugins.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/main.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}back/css/themes.css">
+
+        <script src="{{ STATIC_URL }}back/js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <div id="login-background">
+            <img src="{{ STATIC_URL }}back/img/placeholders/headers/lock_header.jpg" alt="Lock Background" class="animation-pulseSlow">
+        </div>
+
+
+        <div id="login-container" class="animation-slideDown">
+            <div class="login-title text-right">
+                <h1>
+                    <img src="{{ IMG_URL }}administradores/{{ usuario.IM }}.jpg" alt="avatar" class="img-circle pull-left">
+                    <strong>{{ usuario.US }}</strong>
+                </h1>
+            </div>
+
+            <div class="block">
+                <form action="#" method="post" class="form-horizontal push">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <input type="password" id="lock-password" name="lock-password" class="form-control" placeholder="Password">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-unlock-alt"></i> Desbloquear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-center">
+                    <a href="/admin"><small>¿No eres {{ usuario.US }}?</small></a>
+                </p>
+            </div>
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>!window.jQuery && document.write(decodeURI('%3Cscript src="{{ STATIC_URL }}back/js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));</script>
+
+        <script src="{{ STATIC_URL }}back/js/vendor/bootstrap.min.js"></script>
+        <script src="{{ STATIC_URL }}back/js/plugins.js"></script>
+        <script src="{{ STATIC_URL }}back/js/app.js"></script>
+    </body>
+</html>

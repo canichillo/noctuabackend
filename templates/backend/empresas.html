@@ -1,0 +1,64 @@
+{% extends "backend/plantilla.html" %}
+
+{% block titulo %}Empresas{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}back/css/notifications.css"/>
+{% endblock %}
+
+{% block contenido %}
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="gi gi-shop"></i>Empresas<br><small>Gestión de las empresas</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li><a href="/admin">Principal</a></li>
+    <li><a href="">Empresas</a></li>
+</ul>
+
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>Empresas</strong></h2>
+    </div>
+    <div id="grid"></div>
+</div>
+&nbsp;
+<span id="notification" style="display:none;"></span>
+
+<script id="errorTemplate" type="text/x-kendo-template">
+    <div class="wrong-pass">
+        <img src="{{ STATIC_URL }}back/img/error-icon.png" />
+        <h3><b>#= title #</b></h3>
+        <p>#= message #</p>
+    </div>
+</script>
+
+<script id="successTemplate" type="text/x-kendo-template">
+    <div class="success">
+        <img src="{{ STATIC_URL }}back/img/success-icon.png" />
+        <h3><b>#= title #</b></h3>
+        <p>#= message #</p>
+    </div>
+</script>
+
+<script type="text/x-kendo-template" id="template">
+    <div class="toolbar">
+        <a class="k-button" href="#" id="toolbar-add_user" onclick="">Nueva empresa</a>
+    </div>
+</script>
+
+<script id="command-template" type="text/x-kendo-template">
+    <a class="k-button k-button-icontext k-grid-edit" href="/admin/editarempresa/#= id #"><span class="k-icon k-edit"></span>Editar</a>
+    <a class="k-button k-button-icontext k-grid-delete" href="/admin/eliminarempresa/#= id #"><span class="k-icon k-delete"></span>Eliminar</a>
+</script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ STATIC_URL }}back/js/pages/empresas.js"></script>
+    <script>
+        $(function(){ Empresas.init("{{ csrftoken }}", "{{ usuario.TI }}"); });
+    </script>
+{% endblock %}

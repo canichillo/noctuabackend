@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Django default" uuid="3bc42ebe-b6b0-46a0-8c38-eec8df23757b">
+      <user-name>django</user-name>
+      <user-password>df98dffadfe3dfdcdff8df99dfd0dff0dfe0dfc4</user-password>
+    </data-source>
+    <data-source name="Django aws" uuid="7857ea7b-c24e-4ee3-9f4d-6074d911f740">
+      <user-name>noctua</user-name>
+      <user-password>df99df9bdf9bdf98dfcbdfd9dfdadf9adf9fdf93</user-password>
+    </data-source>
+    <data-source name="Django local" uuid="5487ed23-97b4-413e-bd98-f3f93a4550e9">
+      <user-name>postgres</user-name>
+      <user-password>df99df9bdf9bdf98</user-password>
+    </data-source>
+  </component>
+</project>

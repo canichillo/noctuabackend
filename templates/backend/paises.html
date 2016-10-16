@@ -1,0 +1,53 @@
+{% extends "backend/plantilla.html" %}
+
+{% block titulo %}Ciudades{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}back/css/notifications.css"/>
+{% endblock %}
+
+{% block contenido %}
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="gi gi-globe_af"></i>Paises<br><small>Gestión de los paises</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li><a href="/admin">Principal</a></li>
+    <li><a href="">Paises</a></li>
+</ul>
+
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>Paises</strong></h2>
+    </div>
+    <div id="grid"></div>
+</div>
+&nbsp;
+<span id="notification" style="display:none;"></span>
+
+<script id="errorTemplate" type="text/x-kendo-template">
+    <div class="wrong-pass">
+        <img src="{{ STATIC_URL }}back/img/error-icon.png" />
+        <h3><b>#= title #</b></h3>
+        <p>#= message #</p>
+    </div>
+</script>
+
+<script id="successTemplate" type="text/x-kendo-template">
+    <div class="success">
+        <img src="{{ STATIC_URL }}back/img/success-icon.png" />
+        <h3><b>#= title #</b></h3>
+        <p>#= message #</p>
+    </div>
+</script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ STATIC_URL }}back/js/pages/paises.js"></script>
+    <script>
+        $(function(){ Paises.init("{{ csrftoken }}"); });
+    </script>
+{% endblock %}

@@ -1,0 +1,195 @@
+{% extends "backend/plantilla.html" %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block css %}
+    <link href="{{ STATIC_URL }}back/css/html5imageupload.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}back/css/html5fileupload.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ STATIC_URL }}back/css/notifications.css"/>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block contenido %}
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="gi gi-notes_2"></i>{{ titulo }}<br><small>Gestión de los datos de la oferta</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li><a href="/admin">Principal</a></li>
+    <li><a href="/admin/ofertas">Ofertas</a></li>
+    <li><a href="">{{ titulo }}</a></li>
+</ul>
+
+<div class="row">
+    <div class="col-md-3" id="logooferta">
+        <div class="block" id="fotoblock">
+            <div class="block-title">
+                <h2><strong>Imagen</strong> de la oferta</h2>
+            </div>
+            {% if accion.tipo == "C" %}
+                <div class="dropzone" id="dropzonelogo" data-width="400" data-height="200" data-url="" data-image="" data-originalsize="false" style="width: 100%;height: 100%;" data-removeurl="">
+            {% else %}
+                {% if oferta.imagen %}
+                <div class="dropzone" id="dropzonelogo" data-width="400" data-height="200" data-url="" data-image="{{ IMG_URL }}ofertas/{{ oferta.imagen }}.jpg" data-originalsize="false" style="width: 100%;height: 100%;" data-removeurl="">
+                {% else %}
+                <div class="dropzone" id="dropzonelogo" data-width="400" data-height="200" data-url="" data-image="" data-originalsize="false" style="width: 100%;height: 100%;" data-removeurl="">
+                {% endif %}
+            {% endif %}
+                <input type="file" name="thumb" />
+            </div>
+        </div>
+        <button class="btn btn-block btn-success" onclick="Oferta.mostrargs()"><i class="fa fa-image"></i>&nbsp;&nbsp;Seleccionar imagen de ofertas</button>
+        <button class="btn btn-block btn-info" onclick="Oferta.mostrargp()"><i class="fa fa-folder-open"></i>&nbsp;&nbsp;Seleccionar imagen de la galería</button>
+        <br/>
+    </div>
+
+    <div class="col-md-9" id="datosoferta">
+        <div class="block">
+            <div class="block-title">
+                <h2><strong>Datos</strong> de la oferta</h2>
+            </div>
+            <form action="#" method="post" id="form-oferta" class="form-horizontal form-bordered" onsubmit="return false;">
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="nombre">Nombre:</label>
+                    <div class="col-md-9">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" value="{{ oferta.nombre|default_if_none:"" }}">
+                        <span class="help-block">Nombre de la oferta</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="inicio">Inicio:</label>
+                    <div class="col-md-9">
+                        <input id="inicio">
+                        <span class="help-block">Fecha de inicio de la oferta</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="fin">Fin:</label>
+                    <div class="col-md-9">
+                        <input id="fin">
+                        <span class="help-block">Fecha de fin de la oferta</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="cantidad">Cantidad:</label>
+                    <div class="col-md-9">
+                        <input id="cantidad">
+                        <span class="help-block">Cantidad de la oferta (Ejemplo: 10 productos)</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="descripcion">Descripción:</label>
+                    <div class="col-md-9">
+                        <textarea id="descripcion" name="descripcion" rows="9" class="form-control" placeholder="Descripción de la oferta">{{ oferta.descripcion|default_if_none:"" }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group form-actions">
+                    <div class="col-md-9 col-md-offset-3 btn-group">
+                        {% if accion == "C" %}
+                            <button type="submit" class="btn btn-alt btn-primary"><i class="fa fa-save"></i> Guardar datos</button>
+                        {% elif accion == "U" %}
+                            <button type="submit" class="btn btn-alt btn-primary"><i class="fa fa-edit"></i> Guardar datos</button>
+                        {% elif accion == "D" %}
+                            <button type="submit" class="btn btn-alt btn-primary"><i class="fa fa-delete"></i> Eliminar datos</button>
+                        {% endif %}
+                        <button type="reset" class="btn btn-alt btn-warning"><i class="fa fa-repeat"></i> Limpiar datos</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-9" id="gs" style="display: none;">
+        <div class="block">
+            <div class="block-title">
+                <h2><strong>Galería</strong> de Noctua</h2>
+            </div>
+            <div class="gallery" data-toggle="lightbox-gallery">
+                <div class="row">
+                    <div class="col-sm-4 gallery-image">
+                        <img src="https://imagenesNoctua.s3.amazonaws.com/ofertas/09QLalxnFvVFU5XSs6Qo4zH7oaEAF3celBaokVsxuGA.jpg" alt="image"/>
+                        <div class="gallery-image-options text-center">
+                            <div class="btn-group btn-group-sm">
+                                <a href="http://pixelcave.com/demo/proui/img/placeholders/photos/photo1.jpg" class="gallery-link btn btn-sm btn-alt btn-default" title="Imagen">Ver</a>
+                                <a href="javascript:void(0)" class="btn btn-sm btn-alt btn-default" data-toggle="tooltip" title="" data-original-title="Seleccionar"><i class="fa fa-picture-o"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9" id="gp" style="display: none;">
+        <div class="block">
+            <div class="block-title">
+                <h2><strong>Galería</strong> propia</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" id="usuariosoferta" {% if accion == "C" %} style="display:none;" {% endif %}>
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-title">
+                <h2><strong>Usuarios</strong> de la oferta</h2>
+            </div>
+            <div id="grid"></div>
+            &nbsp;
+        </div>
+    </div>
+</div>
+
+<span id="notification" style="display:none;"></span>
+
+<script id="errorTemplate" type="text/x-kendo-template">
+    <div class="wrong-pass">
+        <img src="{{ STATIC_URL }}back/img/error-icon.png" />
+        <h3><b>#= title #</b></h3>
+        <p>#= message #</p>
+    </div>
+</script>
+
+<script id="successTemplate" type="text/x-kendo-template">
+    <div class="success">
+        <img src="{{ STATIC_URL }}back/img/success-icon.png" />
+        <h3><b>#= title #</b></h3>
+        <p>#= message #</p>
+    </div>
+</script>
+
+<script id="rowTemplate" type="text/x-kendo-tmpl">
+<tr data-uid="#: id #">
+    <td>
+       <img src="{{ IMG_URL }}usuarios/#: imagen #.jpg" alt="avatar" class="img-circle imgmini">
+       &nbsp; #: nombre #
+    </td>
+    <td>
+        #= dispositivo #
+    </td>
+</tr>
+</script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ STATIC_URL }}back/js/html5imageupload.js"></script>
+    <script src="{{ STATIC_URL }}back/js/html5fileupload.js"></script>
+    <script src="{{ STATIC_URL }}back/js/pages/oferta.js"></script>
+    <script src="{{ STATIC_URL }}back/js/utilidades.js"></script>
+    <script src="{{ STATIC_URL }}back/js/jquery.confirm.min.js"></script>
+    <script>
+        {% if accion == "C" %}
+            $(function(){ Oferta.init(0, "{{ csrftoken }}", "{{ accion }}", new Date(), new Date(), 0); });
+        {% else %}
+            $(function(){ Oferta.init({{ oferta.id }}, "{{ csrftoken }}", "{{ accion }}", new Date(new Date("{{ oferta.inicio|date:"c" }}").getTime() + new Date().getTimezoneOffset() * 60000),
+                    new Date(new Date("{{ oferta.fin|date:"c" }}").getTime() + new Date().getTimezoneOffset() * 60000), {{ oferta.cantidad|default_if_none:0 }}); });
+        {% endif %}
+    </script>
+{% endblock %}
